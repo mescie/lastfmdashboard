@@ -22,7 +22,7 @@ const sass = require("gulp-sass");
 function browserSync(done) {
   browsersync.init({
     server: {
-      baseDir: "/"
+      baseDir: "/lastfmdashboard"
     },
     port: 3000
   });
@@ -37,7 +37,7 @@ function browserSyncReload(done) {
 
 // Clean assets
 function clean() {
-  return del(["/public/"]);
+  return del(["./public/"]);
 }
 
 // // Optimize Images
@@ -66,13 +66,13 @@ function clean() {
 // CSS task
 function css() {
   return gulp
-    .src("/src/scss/**/*.scss")
+    .src("./src/scss/**/*.scss")
     .pipe(plumber())
     .pipe(sass({ outputStyle: "expanded" }))
-    .pipe(gulp.dest("/public/css/"))
+    .pipe(gulp.dest("./public/css/"))
     .pipe(rename({ suffix: ".min" }))
     .pipe(postcss([autoprefixer(), cssnano()]))
-    .pipe(gulp.dest("/public/css/"))
+    .pipe(gulp.dest("./public/css/"))
     .pipe(browsersync.stream());
 }
 
@@ -106,7 +106,7 @@ function css() {
 
 // Watch files
 function watchFiles() {
-  gulp.watch("/src/scss/**/*", css);
+  gulp.watch("./src/scss/**/*", css);
 //   gulp.watch("./src/js/**/*", gulp.series(scriptsLint, scripts));
 //   gulp.watch(
 //     [
