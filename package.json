@@ -4,6 +4,7 @@
   "description": "A simple dashboard to monitor up to 4 users of last.fm and the songs they listen to.",
   "main": "config.dist.js",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.1",
     "autoprefixer": "^9.7.4",
     "bootstrap": "^4.4.1",
     "browser-sync": "^2.26.7",

@@ -3,25 +3,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Last.fm</title>
-
     <!-- Open Sans Google font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
     <!-- Raleway Google font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:700">
-    <!-- Bootstrap file -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="css/lastfm.css">
-
+    <link rel="stylesheet" href="public/css/main.css">
 <body>
 
-<div id="users">
+    <div class="container-fluid">
+        <div class="row" id="users">
 
+        </div>
 </div>
 
-<div class="col-lg-3" id="user-template" style="display:none">
+<div class="col-12 col-sm-6 col-lg-3" id="user-template" style="display:none">
     <h1><a href="{{userurl}}" target="_blank">{{username}}</a></h1>
     <div class="profile-pic">
         <img src="{{userimage}}" />
@@ -65,11 +61,11 @@
 </div>
 
 <!-- End Footer Section -->
-<script src="js/jquery-1.12.1.min.js"></script>
-<script src="js/lastfm.api.cache.js"></script>
-<script src="js/lastfm.api.js"></script>
-<script src="js/lastfm.api.md5.js"></script>
+<script src="src/js/jquery-1.12.1.min.js"></script>
+<script src="src/js/lastfm.api.cache.js"></script>
+<script src="src/js/lastfm.api.js"></script>
+<script src="src/js/lastfm.api.md5.js"></script>
 <script src="config.js"></script>
-<script src="js/scripts.js"></script>
+<script src="src/js/scripts.js"></script>
 
 </body></html>
