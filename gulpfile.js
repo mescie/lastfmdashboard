@@ -6,7 +6,7 @@ const browsersync = require("browser-sync").create();
 // const cp = require("child_process");
 const cssnano = require("cssnano");
 const del = require("del");
-// const eslint = require("gulp-eslint");
+const eslint = require("gulp-eslint");
 const gulp = require("gulp");
 // const imagemin = require("gulp-imagemin");
 // const newer = require("gulp-newer");
@@ -86,18 +86,17 @@ function css() {
 //     .pipe(eslint.failAfterError());
 // }
 
-// // Transpile, concatenate and minify scripts
-// function scripts() {
-//   return (
-//     gulp
-//       .src(["./src/js/**/*"])
-//       .pipe(plumber())
-//       .pipe(webpackstream(webpackconfig, webpack))
-//       // folder only, filename is specified in webpack config
-//       .pipe(gulp.dest("./_site/assets/js/"))
-//       .pipe(browsersync.stream())
-//   );
-// }
+// Transpile, concatenate and minify scripts
+function scripts() {
+  return (
+    gulp
+      .src(["./src/js/**/*"])
+      .pipe(plumber())
+      // folder only, filename is specified in webpack config
+      .pipe(gulp.dest("./public/js/"))
+      .pipe(browsersync.stream())
+  );
+}
 
 // // Jekyll
 // function jekyll() {
@@ -107,29 +106,19 @@ function css() {
 // Watch files
 function watchFiles() {
   gulp.watch("./src/scss/**/*", css);
-//   gulp.watch("./src/js/**/*", gulp.series(scriptsLint, scripts));
-//   gulp.watch(
-//     [
-//       "./_includes/**/*",
-//       "./_layouts/**/*",
-//       "./_pages/**/*",
-//       "./_posts/**/*",
-//       "./_projects/**/*"
-//     ],
-//     gulp.series(jekyll, browserSyncReload)
-//   );
+  gulp.watch("./src/js/**/*", gulp.series(scripts));
 //   gulp.watch("./assets/img/**/*", images);
 }
 
 // define complex tasks
-// const js = gulp.series(scriptsLint, scripts);
+const js = gulp.series(scripts);
 const build = gulp.series(clean, gulp.parallel(css));
 const watch = gulp.parallel(watchFiles, browserSync);
 
 // export tasks
 // exports.images = images;
 exports.css = css;
-// exports.js = js;
+exports.js = js;
 // exports.jekyll = jekyll;
 exports.clean = clean;
 exports.build = build;
